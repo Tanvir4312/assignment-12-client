@@ -1,7 +1,11 @@
 import React from 'react'
 import Slider from '../Slider/Slider'
 import FeaturedProducts from '../FeaturedProducts/FeaturedProducts'
-import TrendingProducts from '../TrendingProducts/Trendingproducts'
+import LatestProducts from '../LatestProducts/LatestProducts'
+import TrendingProduct from '../TrendingProduct/TrendingProduct'
+
+
+
 
 const Home = () => {
   return (
@@ -10,8 +14,11 @@ const Home = () => {
       <Slider></Slider>
       {/* Featured Products */}
       <FeaturedProducts></FeaturedProducts>
+      {/* Latest Products */}
+      <LatestProducts></LatestProducts>
       {/* Trending Products */}
-      <TrendingProducts></TrendingProducts>
+      <TrendingProduct></TrendingProduct>
+
     </div>
   )
 }

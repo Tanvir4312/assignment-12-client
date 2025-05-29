@@ -1,17 +1,15 @@
-import React from "react";
-import useProducts from "../../../hooks/useProducts";
-import Heading from "../../../components/Shared/Heading/Heading";
-import ProductsCard from "../../../components/Shared/ProductCard/ProductCard";
-import { Link } from "react-router-dom";
+import React from 'react'
+import Heading from '../../../components/Shared/Heading/Heading';
+import ProductsCard from '../../../components/Shared/ProductCard/ProductCard';
+import { Link } from 'react-router-dom';
+import useProducts from '../../../hooks/useProducts';
 
-
-const TrendingProducts = () => {
-  const [products, refetch] = useProducts();
+const TrendingProduct = () => {
+    const [products, refetch] = useProducts();
 
   const sortedData = products.sort((a, b) => b.votes - a.votes);
-
   return (
-    <div>
+   <div>
       <div>
         <Heading text={"trending products"}></Heading>
       </div>
@@ -33,7 +31,7 @@ const TrendingProducts = () => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TrendingProducts;
+export default TrendingProduct
