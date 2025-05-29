@@ -7,6 +7,11 @@ import Login from "../Pages/Autentication/Login";
 import DashboardLayouts from "../layouts/DashboardLayouts";
 import PrivateRoute from "./PrivateRoute";
 
+import MyProfile from "../Pages/Dashboard/UserSlot/MyProfile";
+import MyProducts from "../Pages/Dashboard/UserSlot/MyProducts";
+import AddProducts from "../Pages/Dashboard/UserSlot/AddProducts/AddProducts";
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,20 +33,20 @@ const router = createBrowserRouter([
       </PrivateRoute>
 
     ),
-    // children: [
-    //   {
-    //     path: "my-profile",
-    //     element: <MyProfile></MyProfile>,
-    //   },
-    //   {
-    //     path: "add-product",
-    //     element: <AddProduct></AddProduct>,
-    //   },
-    //   {
-    //     path: "my-product",
-    //     element: <MyProducts></MyProducts>,
-    //   },
-    // ],
+    children: [
+      {
+        path: "my-profile",
+        element: <MyProfile></MyProfile>,
+      },
+      {
+        path: "add-product",
+        element: <AddProducts></AddProducts>
+      },
+      {
+        path: "my-product",
+        element: <MyProducts></MyProducts>,
+      },
+    ],
   },
   {
     path: 'register',
