@@ -1,12 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
+import { ToastContainer } from 'react-toastify';
 import {
 
   RouterProvider,
 } from "react-router-dom";
 import router from './Routes/router.jsx';
+import AuthProvider from './Provider/AuthProvider.jsx';
 
 
 
@@ -14,7 +15,10 @@ import router from './Routes/router.jsx';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <div className='max-w-6xl mx-auto'>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+        <ToastContainer />
+      </AuthProvider>
     </div>
   </StrictMode>,
 )

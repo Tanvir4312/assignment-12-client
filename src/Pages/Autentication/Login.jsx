@@ -1,8 +1,37 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import register_bg from '../../assets/register-bg.avif'
+import useAuth from '../../hooks/useAuth';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+    const { userLogin, loginWithGoogle } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        userLogin(email, password)
+            .then(() => {
+                toast.success("User login successfully");
+                navigate("/");
+            })
+            .catch((err) => {
+                toast.error(err.message);
+            });
+    };
+
+    const handleGoogleLogin = () => {
+        loginWithGoogle()
+            .then(() => {
+                toast.success("Login successfully");
+                navigate("/");
+            })
+            .catch((err) => toast.error(err.message));
+    };
     return (
         <div
             className="min-h-screen flex items-center justify-center bg-cover bg-no-repeat bg-center py-8 md:px-0 px-2"
@@ -15,7 +44,7 @@ const Login = () => {
                     Please <span className="text-orange-500">Login</span>
                 </h2>
 
-                <form className="space-y-4">
+                <form onSubmit={handleLogin} className="space-y-4">
 
 
 
@@ -52,7 +81,7 @@ const Login = () => {
 
                 {/* Google Login */}
                 <button
-
+                    onClick={handleGoogleLogin}
                     className="btn w-full flex justify-center items-center gap-2 bg-white text-black hover:bg-blue-200 hover:text-white transition"
                 >
                     <img
