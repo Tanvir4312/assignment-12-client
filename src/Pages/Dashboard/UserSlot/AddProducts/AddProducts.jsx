@@ -35,7 +35,8 @@ const AddProducts = () => {
             tags: tagsArr,
             timestamp: new Date(),
             isFeatured: false,
-            votes: 0
+            votes: 0,
+            status: 'pending'
         };
 
         // Save Data
@@ -52,9 +53,9 @@ const AddProducts = () => {
             <div>
                 <Heading text={"add product"}></Heading>
             </div>
-            <div className="bg-slate-300 p-5 rounded">
+            <div className="bg-slate-300 p-5 rounded md:m-0 mx-3">
                 <form className="mt-0" onSubmit={handleAdd}>
-                    {/* User Name */}
+                    {/* Product Name */}
 
                     <label className="input validator w-full">
                         <svg

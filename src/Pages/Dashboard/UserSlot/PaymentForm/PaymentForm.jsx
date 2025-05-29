@@ -26,7 +26,7 @@ const PaymentForm = ({ setIsOpen, subscriptionAmount, userInfo, refetch }) => {
     }, [axiosSecure, subscriptionAmount])
 
     const handleSubmit = async (event) => {
-            
+
         // Block native form submission.
         event.preventDefault();
 
@@ -87,7 +87,7 @@ const PaymentForm = ({ setIsOpen, subscriptionAmount, userInfo, refetch }) => {
             }
 
             try {
-               
+
                 await axiosSecure.post('/payments', paymentInfo)
                 // update user collection
                 await axiosSecure.patch(`/data-update/${userInfo?._id}`, {
@@ -103,28 +103,30 @@ const PaymentForm = ({ setIsOpen, subscriptionAmount, userInfo, refetch }) => {
         }
     };
     return (
-        <div>
+        <div className=''>
             <form onSubmit={handleSubmit}>
-                <CardElement
-                    options={{
-                        style: {
-                            base: {
-                                fontSize: '16px',
-                                color: '#424770',
-                                '::placeholder': {
-                                    color: '#aab7c4',
+           
+                    <CardElement
+                        options={{
+                            style: {
+                                base: {
+                                    fontSize: '16px',
+                                    color: '#424770',
+                                    '::placeholder': {
+                                        color: '#aab7c4',
+                                    },
+                                },
+                                invalid: {
+                                    color: '#9e2146',
                                 },
                             },
-                            invalid: {
-                                color: '#9e2146',
-                            },
-                        },
-                    }}
-                />
+                        }}
+                    />
+          
 
                 <div className="flex gap-4">
                     <button disabled={!stripe || !clientSecret} className='btn bg-blue-500 w-2/4 hover:text-white'>Pay</button>
-                    <button className='btn w-2/4 bg-red-500 hover:text-white' onClick={() => setIsOpen(false)}>Cancel</button>
+                    <button className='btn w-2/4 bg-amber-600 hover:text-white' onClick={() => setIsOpen(false)}>Cancel</button>
                 </div>
             </form>
         </div>

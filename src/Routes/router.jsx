@@ -11,6 +11,7 @@ import MyProfile from "../Pages/Dashboard/UserSlot/MyProfile";
 import MyProducts from "../Pages/Dashboard/UserSlot/MyProducts";
 import AddProducts from "../Pages/Dashboard/UserSlot/AddProducts/AddProducts";
 import Products from "../Pages/Products/Products";
+import MyProductUpdate from "../Pages/MyProductUpdate/MyProductUpdate";
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
         element: <Products></Products>,
         loader: () =>
           fetch(`${import.meta.env.VITE_API_URL}/all-product-count`),
+      },
+      {
+        path: 'my-product-update/:id',
+        element: <MyProductUpdate></MyProductUpdate>
       }
     ]
   },
