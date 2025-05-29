@@ -60,25 +60,25 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-    //   if (currentUser) {
-    //     const user = {
-    //       email: currentUser?.email,
-    //       name: currentUser?.displayName,
-    //       role: 'user',
-    //       isSubscribed: false,
-    //       subscriptionAmount: 10,
-    //       createdAt: new Date(),
-    //       subscriptionDate: null,
-    //       paymentVerified: false,
-    //       status: 'pending'
-    //     }
-    //     try {
-    //       const { data } = await axiosPublic.post(`/user/${currentUser?.email}`, user)
-    //       console.log(data)
-    //     } catch (err) {
-    //       console.log(err)
-    //     }
-    //   }
+      if (currentUser) {
+        const user = {
+          email: currentUser?.email,
+          name: currentUser?.displayName,
+          role: 'user',
+          isSubscribed: false,
+          subscriptionAmount: 10,
+          createdAt: new Date(),
+          subscriptionDate: null,
+          paymentVerified: false,
+          status: 'pending'
+        }
+        try {
+          const { data } = await axiosPublic.post(`/user/${currentUser?.email}`, user)
+          console.log(data)
+        } catch (err) {
+          console.log(err)
+        }
+      }
 
     });
     return () => {
