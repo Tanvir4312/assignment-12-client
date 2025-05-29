@@ -1,7 +1,7 @@
 import React from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 
@@ -33,7 +33,7 @@ const ProductsCard = ({ product, refetch }) => {
         <img src={photo} alt="Movie" />
       </figure>
       <div className="card-body w-2/3">
-        <h2 className="card-title">{name}</h2>
+        <Link to={'/products-details'}><h2 className="card-title">{name}</h2></Link>
         <div className="flex items-center gap-3">
           <img
             className="w-10"
