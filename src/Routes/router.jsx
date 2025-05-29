@@ -12,6 +12,9 @@ import MyProducts from "../Pages/Dashboard/UserSlot/MyProducts";
 import AddProducts from "../Pages/Dashboard/UserSlot/AddProducts/AddProducts";
 import Products from "../Pages/Products/Products";
 import MyProductUpdate from "../Pages/MyProductUpdate/MyProductUpdate";
+import ReviewQueue from "../Pages/Dashboard/ModeratorSlot/ReviewQueue/ReviewQueue";
+import ReportedContents from "../Pages/Dashboard/ModeratorSlot/ReportedContents/ReportedContents";
+import ProductDetail from "../Pages/ProductDetail/ProductDetail";
 
 
 const router = createBrowserRouter([
@@ -33,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: 'my-product-update/:id',
         element: <MyProductUpdate></MyProductUpdate>
+      },
+      {
+        path: 'product-details/:id',
+        element: <PrivateRoute><ProductDetail></ProductDetail></PrivateRoute>
       }
     ]
   },
@@ -46,6 +53,8 @@ const router = createBrowserRouter([
 
     ),
     children: [
+
+      // -------------User routes--------------
       {
         path: "my-profile",
         element: <MyProfile></MyProfile>,
@@ -58,6 +67,16 @@ const router = createBrowserRouter([
         path: "my-product",
         element: <MyProducts></MyProducts>,
       },
+
+      // -----------moderator routes-----------------
+      {
+        path: 'review-queue',
+        element: <ReviewQueue></ReviewQueue>
+      },
+      {
+        path: 'reported-contents',
+        element: <ReportedContents></ReportedContents>
+      }
     ],
   },
   {

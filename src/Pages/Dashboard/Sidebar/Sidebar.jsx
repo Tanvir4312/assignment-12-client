@@ -1,11 +1,20 @@
 import React from 'react'
 import UserSidebar from '../UserSidebar/UserSidebar'
+import ModeratorSidebar from '../ModeratorSidebar/ModeratorSidebar'
 
-const Sidebar = () => {
+
+const Sidebar = ({ user }) => {
+ 
   return (
     <div>
       {/* User */}
-      <UserSidebar></UserSidebar>
+      {
+        user.role === 'user' && <UserSidebar></UserSidebar>
+      }
+      {/* Moderator */}
+      {
+        user.role === 'moderator' && <ModeratorSidebar></ModeratorSidebar>
+      }
     </div>
   )
 }
