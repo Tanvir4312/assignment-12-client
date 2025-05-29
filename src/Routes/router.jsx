@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home/Home";
 import Error from "../components/Error/Error";
 import Register from "../Pages/Autentication/Register";
 import Login from "../Pages/Autentication/Login";
+import DashboardLayouts from "../layouts/DashboardLayouts";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,15 @@ const router = createBrowserRouter([
             element: <Home></Home>
         }
     ]
+  },
+   {
+    path: "dashboard",
+    element: (
+      
+        <DashboardLayouts></DashboardLayouts>
+     
+    ),
+
   },
   {
     path: 'register',
