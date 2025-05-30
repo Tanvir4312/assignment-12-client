@@ -16,7 +16,7 @@ const ManageUsers = () => {
       return data
     }
   })
-  console.log(users)
+ 
   return (
     <div>
       <div>
