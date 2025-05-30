@@ -7,6 +7,8 @@ import ProductsCard from "../../../components/Shared/ProductCard/ProductCard";
 const LatestProducts = () => {
  const [products, refetch] = useProducts()
 
+ 
+
   return (
     <div>
       <div>

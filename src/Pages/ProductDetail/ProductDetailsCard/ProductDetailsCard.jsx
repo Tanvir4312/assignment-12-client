@@ -7,9 +7,6 @@ import { toast } from 'react-toastify';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 
-
-// import useAuth from '../../../hooks/useAuth'
-
 const ProductDetailsCard = ({ product, refetch }) => {
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
@@ -17,11 +14,9 @@ const ProductDetailsCard = ({ product, refetch }) => {
     const { description, name, photo, links, tags, votes, ownerEmail, _id, report, status } = product || {}
 
 
+    const tagArray = typeof tags === 'string' ? tags.split(', ') : tags;
 
 
-
-
-    console.log(product?._id)
     //    Up vote button
     const handleVotes = async (id) => {
 
@@ -93,7 +88,7 @@ const ProductDetailsCard = ({ product, refetch }) => {
     })
 
 
-   
+
 
     return (
         <div className="max-w-2xl mx-auto p-6">
@@ -102,7 +97,7 @@ const ProductDetailsCard = ({ product, refetch }) => {
                 <img src={photo} alt={product.name} className="w-80 mx-auto h-64 mb-4 rounded" />
                 <h2 className="text-2xl font-bold">{name}</h2>
                 <p className="text-gray-600 my-2">{description}</p>
-                <p className="text-sm text-blue-500 mb-2">Tags: {tags?.join(', ')}</p>
+                {tagArray?.map((tag, idx) => <p key={idx} className="text-sm text-blue-500 mb-2">Tags: {tag}</p>)}
                 <a href={links} target="_blank" rel="noreferrer" className="text-blue-600 underline">
                     Visit External Link
                 </a>

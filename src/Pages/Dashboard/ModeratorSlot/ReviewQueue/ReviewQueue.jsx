@@ -7,7 +7,7 @@ import ReviewTable from '../ReviewTable/ReviewTable';
 const ReviewQueue = () => {
     const axiosSecure = useAxiosSecure()
 
-    const { data: products = [] } = useQuery({
+    const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
             const { data } = await axiosSecure.get('/product-review')
@@ -24,6 +24,7 @@ const ReviewQueue = () => {
 
     // Sort Data
     const sortedProducts = [...products].sort((a, b) => statusPriority[a.status] - statusPriority[b.status])
+  
   
     return (
         <div>
@@ -49,6 +50,7 @@ const ReviewQueue = () => {
                                 key={product._id}
                                 product={product}
                                 idx={idx}
+                                refetch={refetch}
                             ></ReviewTable>)
                         }
                         

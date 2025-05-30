@@ -32,8 +32,8 @@ const ProductsCard = ({ product, refetch }) => {
 
   return (
     <div className="card card-side bg-base-100 shadow-sm transition delay-150 duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-105 m-3">
-      <figure className="w-1/3 h-[200px]">
-        <img src={photo} alt="Movie" />
+      <figure className="w-1/3 h-full">
+        <img className="" src={photo} alt="Movie" />
       </figure>
       <div className="card-body w-2/3">
         <Link to={`/product-details/${_id}`}><h2 className="card-title">{name}</h2></Link>
@@ -44,7 +44,7 @@ const ProductsCard = ({ product, refetch }) => {
             alt=""
           />
           <div className="flex flex-wrap gap-2">
-           {tagArray.map((tag, index) => (
+           {tagArray?.map((tag, index) => (
               <span
                 key={index}
                 className="bg-gray-200 text-sm px-2 py-1 rounded-full text-gray-700"
@@ -70,7 +70,9 @@ const ProductsCard = ({ product, refetch }) => {
               alt=""
             />
           </button>
+          
         </div>
+       
       </div>
     </div>
   );

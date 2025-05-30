@@ -12,6 +12,7 @@ import { useEffect } from 'react'
 const MyProductUpdate = () => {
     const { id } = useParams()
     const axiosSecure = useAxiosSecure()
+    const [inputValue, setInputValue] = useState(null)
 
     const navigate = useNavigate()
 
@@ -99,6 +100,7 @@ const MyProductUpdate = () => {
                                 </g>
                             </svg>
                             <input
+                                onChange={(e) => setInputValue(e.target.value)}
                                 className="w-full"
                                 defaultValue={name}
                                 name="name"
@@ -129,6 +131,7 @@ const MyProductUpdate = () => {
                                 </g>
                             </svg>
                             <input
+                                onChange={(e) => setInputValue(e.target.value)}
                                 className="w-full"
                                 defaultValue={photo}
                                 name="photo"
@@ -148,6 +151,7 @@ const MyProductUpdate = () => {
                         <legend className="fieldset-legend">Product Description</legend>
                         <fieldset className="fieldset pb-5">
                             <textarea
+                                onChange={(e) => setInputValue(e.target.value)}
                                 className="textarea h-24 w-full"
                                 defaultValue={description}
                                 name="description"
@@ -160,7 +164,7 @@ const MyProductUpdate = () => {
                         {/* Tags */}
                         <legend className="fieldset-legend">Product Tags</legend>
                         <input
-
+                            onChange={(e) => setInputValue(e.target.value)}
                             type="text"
                             defaultValue={tags}
                             name='tags'
@@ -174,6 +178,7 @@ const MyProductUpdate = () => {
                         {/* External Links */}
                         <legend className="fieldset-legend">External Links</legend>
                         <input
+                            onChange={(e) => setInputValue(e.target.value)}
                             type="text"
                             defaultValue={links}
                             name="links"
@@ -182,7 +187,7 @@ const MyProductUpdate = () => {
                         />
 
                         <div className="text-center">
-                            <button className="btn btn-outline md:w-[15rem] border-white text-white hover:text-black">
+                            <button disabled={!inputValue} className="btn bg-stone-500 border-0 md:w-[15rem] border-white text-white hover:text-black">
                                 Update
                             </button>
                         </div>
