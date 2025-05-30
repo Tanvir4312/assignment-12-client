@@ -3,11 +3,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import register_bg from '../../assets/register-bg.avif'
 import useAuth from '../../hooks/useAuth';
 import { toast } from 'react-toastify';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 const Login = () => {
     const { userLogin, loginWithGoogle } = useAuth();
     const navigate = useNavigate();
-
+    const axiosPublic = useAxiosPublic()
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -26,11 +27,33 @@ const Login = () => {
 
     const handleGoogleLogin = () => {
         loginWithGoogle()
-            .then(() => {
+            .then((result) => {
+
+
+
+                const userInfo = {
+                    email: result?.user?.email,
+                    name: result?.user?.displayName,
+                    role: 'user',
+                    isSubscribed: false,
+                    subscriptionAmount: 10,
+                    createdAt: new Date(),
+                    subscriptionDate: null,
+                    paymentVerified: false,
+                    status: 'pending'
+                };
+
+
+                 axiosPublic.post(`/user/${result?.user?.email}`, userInfo);
+
+
+
+
+
                 toast.success("Login successfully");
                 navigate("/");
             })
-            .catch((err) => toast.error(err.message));
+            
     };
     return (
         <div

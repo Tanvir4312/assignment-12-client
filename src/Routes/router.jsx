@@ -15,6 +15,9 @@ import MyProductUpdate from "../Pages/MyProductUpdate/MyProductUpdate";
 import ReviewQueue from "../Pages/Dashboard/ModeratorSlot/ReviewQueue/ReviewQueue";
 import ReportedContents from "../Pages/Dashboard/ModeratorSlot/ReportedContents/ReportedContents";
 import ProductDetail from "../Pages/ProductDetail/ProductDetail";
+import StatisticsPage from "../Pages/Dashboard/AdminSlot/StatisticsPage/StatisticsPage";
+import ManageUsers from "../Pages/Dashboard/AdminSlot/ManageUsers/ManageUsers";
+import ManageCoupons from "../Pages/Dashboard/AdminSlot/ManageCoupons/ManageCoupons";
 
 
 const router = createBrowserRouter([
@@ -76,7 +79,21 @@ const router = createBrowserRouter([
       {
         path: 'reported-contents',
         element: <ReportedContents></ReportedContents>
-      }
+      },
+
+      // -------------Admin routes-------------------
+    {
+        path: 'statistic',
+        element: <StatisticsPage></StatisticsPage>
+    },
+    {
+        path: 'manage-users',
+        element: <ManageUsers></ManageUsers>
+    },
+    {
+        path: 'manage-coupons',
+        element: <ManageCoupons></ManageCoupons>
+    },
     ],
   },
   {

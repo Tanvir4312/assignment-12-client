@@ -4,9 +4,11 @@ import register_bg from '../../assets/register-bg.avif'
 import { Link, useNavigate } from 'react-router-dom'
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 const Register = () => {
+    const axiosPublic = useAxiosPublic()
 
     const { createUser, loginWithGoogle, profileUpdate } = useAuth();
     const navigate = useNavigate()
@@ -21,8 +23,23 @@ const Register = () => {
         try {
             await createUser(email, password);
             await profileUpdate(name, photo);
+
+
+            const userInfo = {
+                email: email,
+                name: name,
+                role: 'user',
+                isSubscribed: false,
+                subscriptionAmount: 10,
+                createdAt: new Date(),
+                subscriptionDate: null,
+                paymentVerified: false,
+                status: 'pending'
+            };
+            await axiosPublic.post(`/user/${email}`, userInfo);
+
             toast.success("Signup successfully");
-            navigate('/')
+            navigate('/');
         } catch (err) {
             toast.error(err.message);
             console.log(err);
@@ -31,7 +48,24 @@ const Register = () => {
 
     // Login with google
     const handleGoogleLogin = () => {
-        loginWithGoogle().then(() => {
+        loginWithGoogle().then( (result) => {
+
+            const userInfo = {
+                email: result?.user?.email,
+                name: result?.user?.displayName,
+                role: 'user',
+                isSubscribed: false,
+                subscriptionAmount: 10,
+                createdAt: new Date(),
+                subscriptionDate: null,
+                paymentVerified: false,
+                status: 'pending'
+            };
+
+
+             axiosPublic.post(`/user/${result?.user?.email}`, userInfo);
+
+
             toast.success("Login successfully");
             navigate('/')
         });

@@ -1,6 +1,7 @@
 import React from 'react'
 import UserSidebar from '../UserSidebar/UserSidebar'
 import ModeratorSidebar from '../ModeratorSidebar/ModeratorSidebar'
+import AdminSidebar from '../AdminSidebar/AdminSidebar'
 
 
 const Sidebar = ({ user }) => {
@@ -9,11 +10,15 @@ const Sidebar = ({ user }) => {
     <div>
       {/* User */}
       {
-        user.role === 'user' && <UserSidebar></UserSidebar>
+        user?.role === 'user' && <UserSidebar></UserSidebar>
       }
       {/* Moderator */}
       {
-        user.role === 'moderator' && <ModeratorSidebar></ModeratorSidebar>
+        user?.role === 'moderator' && <ModeratorSidebar></ModeratorSidebar>
+      }
+      {/* Admin */}
+      {
+        user?.role === 'admin' && <AdminSidebar></AdminSidebar>
       }
     </div>
   )

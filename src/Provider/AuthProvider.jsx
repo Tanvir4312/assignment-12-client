@@ -13,7 +13,7 @@ import {
 import { GoogleAuthProvider } from "firebase/auth";
 
 import { app } from "../firebase/firebase.config";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+
 
 
 
@@ -26,7 +26,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const axiosPublic = useAxiosPublic()
+
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -60,31 +60,12 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      if (currentUser) {
-        const user = {
-          email: currentUser?.email,
-          name: currentUser?.displayName,
-          role: 'user',
-          isSubscribed: false,
-          subscriptionAmount: 10,
-          createdAt: new Date(),
-          subscriptionDate: null,
-          paymentVerified: false,
-          status: 'pending'
-        }
-        try {
-          const { data } = await axiosPublic.post(`/user/${currentUser?.email}`, user)
-          console.log(data)
-        } catch (err) {
-          console.log(err)
-        }
-      }
-
+     
     });
     return () => {
       unsubscribe();
     };
-  }, [axiosPublic]);
+  }, []);
   console.log(user);
 
   const autInfo = {
