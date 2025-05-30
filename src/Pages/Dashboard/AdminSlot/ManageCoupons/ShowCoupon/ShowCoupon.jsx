@@ -31,7 +31,7 @@ const ShowCoupon = ({ coupon, refetch }) => {
             if (result.isConfirmed) {
                 try {
                     await axiosSecure.delete(`/coupon-data-delete/${id}`)
-                    toast.success('Coupon Deleted')
+                   
                     refetch()
                 } catch (err) {
                     console.log(err)
@@ -40,7 +40,7 @@ const ShowCoupon = ({ coupon, refetch }) => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "Your work has been saved",
+                    title: "Coupon Delete Successfully",
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -70,13 +70,13 @@ const ShowCoupon = ({ coupon, refetch }) => {
                 </div>
                 <div className="flex justify-end space-x-3">
                     <button
-                        onClick={() => handleEdit(_id)}
+                        onClick={handleEdit}
                         className="text-blue-500 cursor-pointer hover:text-blue-700"
                     >
                         <FaEdit />
                     </button>
                     <button
-                        onClick={ handleDelete}
+                        onClick={ () => handleDelete(_id)}
                         className="text-red-500 cursor-pointer hover:text-red-700"
                     >
                         <FaTrash />

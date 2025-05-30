@@ -89,7 +89,7 @@ const UpdateCouponModal = ({ setIsOpen, isOpen, coupon, refetch }) => {
                             name="amount"
                             defaultValue={coupon?.discount}
                             min="1"
-                            max="100"
+                           
 
                             placeholder="Enter discount percentage"
                             className="w-full rounded border border-gray-300 px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-indigo-500"
