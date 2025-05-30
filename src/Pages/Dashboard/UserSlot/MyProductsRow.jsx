@@ -37,7 +37,7 @@ const MyProductsRow = ({ product, idx, refetch }) => {
             }
         });
 
-        console.log(id)
+  
     }
     return (
         <tr className="bg-base-200">
