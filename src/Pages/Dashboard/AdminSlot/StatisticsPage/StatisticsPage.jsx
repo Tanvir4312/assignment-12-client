@@ -11,7 +11,7 @@ const StatisticsPage = () => {
       .then(res => res.json())
       .then(data => setStatisticData(data))
   }, [])
-  console.log(statisticData)
+ 
   return (
     <div>
       <div>
