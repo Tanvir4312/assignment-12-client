@@ -45,7 +45,7 @@ const ProductDetailsCard = ({ product, refetch }) => {
             toast.success("Report Done");
             refetch();
         } catch (err) {
-            if (err.response.data.message) {
+            if (err) {
                 return toast.error(err.response.data.message);
             }
         }

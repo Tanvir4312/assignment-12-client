@@ -24,7 +24,7 @@ const ProductsCard = ({ product, refetch }) => {
       toast.success("Thank you for your vote❤️");
       refetch();
     } catch (err) {
-      if (err.response.data.message) {
+      if (err) {
         return toast.error(err.response.data.message);
       }
     }

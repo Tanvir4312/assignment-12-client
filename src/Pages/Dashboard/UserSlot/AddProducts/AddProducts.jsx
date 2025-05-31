@@ -50,6 +50,7 @@ const AddProducts = () => {
             navigate("/dashboard/my-product");
           
         } catch (err) {
+            console.log(err)
            toast.error(`Oh no!! ${err.response.data.message}`);
         }
     };
