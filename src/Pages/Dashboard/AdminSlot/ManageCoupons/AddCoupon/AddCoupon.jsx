@@ -1,13 +1,15 @@
 import React from 'react'
 
-import useAxiosSecure from '../../../../../hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
-import { useQuery } from '@tanstack/react-query';
+
 import ShowCoupon from '../ShowCoupon/ShowCoupon';
+import useCoupon from '../../../../../hooks/useCoupon';
+import useAxiosSecure from '../../../../../hooks/useAxiosSecure';
 
 
 const AddCoupon = () => {
     const axiosSecure = useAxiosSecure()
+    const [coupons, refetch] = useCoupon()
 
     const handleCoupon = async (e) => {
         e.preventDefault();
@@ -20,9 +22,9 @@ const AddCoupon = () => {
 
         const couponObj = {
             coupon_code: coupon,
-            expiry_date:date,
+            expiry_date: date,
             description,
-            discount:Number(amount)
+            discount: Number(amount)
 
         };
 
@@ -38,15 +40,8 @@ const AddCoupon = () => {
         refetch()
     };
 
-    // get review data
-    const { data: coupons = [], refetch } = useQuery({
-        queryKey: ['all-coupon'],
-        queryFn: async () => {
-            const { data } = await axiosSecure.get('/all-coupon');
-            return data
-        }
-    })
-    
+
+
 
     return (
         <div>

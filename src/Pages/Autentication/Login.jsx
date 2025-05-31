@@ -36,7 +36,7 @@ const Login = () => {
                     name: result?.user?.displayName,
                     role: 'user',
                     isSubscribed: false,
-                    subscriptionAmount: 10,
+                   
                     createdAt: new Date(),
                     subscriptionDate: null,
                     paymentVerified: false,

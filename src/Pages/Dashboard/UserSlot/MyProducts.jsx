@@ -17,7 +17,7 @@ const MyProducts = () => {
       return data
     }
   })
-  console.log(products)
+
   return (
     <div>
       <div>

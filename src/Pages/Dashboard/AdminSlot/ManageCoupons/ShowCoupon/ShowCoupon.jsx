@@ -2,7 +2,7 @@ import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../../hooks/useAxiosSecure';
-import { toast } from 'react-toastify';
+
 import { useState } from 'react';
 import UpdateCouponModal from '../UpdateCouponModal/UpdateCouponModal';
 

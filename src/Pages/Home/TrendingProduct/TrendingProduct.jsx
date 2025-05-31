@@ -3,29 +3,21 @@ import Heading from '../../../components/Shared/Heading/Heading';
 import ProductsCard from '../../../components/Shared/ProductCard/ProductCard';
 import { Link } from 'react-router-dom';
 import useProducts from '../../../hooks/useProducts';
-import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+
 
 import CouponCard from './CouponCard/CouponCard';
 
 import Marquee from 'react-fast-marquee';
+import useCoupon from '../../../hooks/useCoupon';
 
 
 const TrendingProduct = () => {
   const [products, refetch] = useProducts();
-  const axiosSecure = useAxiosSecure()
+const [coupons] = useCoupon()
   const sortedData = products.sort((a, b) => b.votes - a.votes);
 
 
-  // Coupon
-  // get coupon data
-  const { data: coupons = [] } = useQuery({
-    queryKey: ['all-coupon'],
-    queryFn: async () => {
-      const { data } = await axiosSecure.get('/all-coupon');
-      return data
-    }
-  })
+
 
   return (
     <div>
@@ -54,16 +46,16 @@ const TrendingProduct = () => {
         <h5 className='text-xl text-center font-medium'>Choose Your <span className='text-rose-500'>best Deal</span></h5>
       </div>
 
-      
-      
-        <Marquee pauseOnHover={true} gradient={false} speed={100}>
+
+
+      <Marquee pauseOnHover={true} gradient={false} speed={100}>
         <div className="flex gap-4 px-2">
-          {coupons.map((coupon, index) => (
-            <CouponCard key={index} coupon={coupon} />
+          {coupons.map((coupon) => (
+            <CouponCard key={coupon._id} coupon={coupon}/>
           ))}
         </div>
       </Marquee>
-      
+
 
     </div>
   )

@@ -30,7 +30,7 @@ const Register = () => {
                 name: name,
                 role: 'user',
                 isSubscribed: false,
-                subscriptionAmount: 10,
+             
                 createdAt: new Date(),
                 subscriptionDate: null,
                 paymentVerified: false,
@@ -55,7 +55,7 @@ const Register = () => {
                 name: result?.user?.displayName,
                 role: 'user',
                 isSubscribed: false,
-                subscriptionAmount: 10,
+               
                 createdAt: new Date(),
                 subscriptionDate: null,
                 paymentVerified: false,

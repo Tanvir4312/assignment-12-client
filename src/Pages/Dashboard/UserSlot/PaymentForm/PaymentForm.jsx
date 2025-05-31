@@ -71,7 +71,7 @@ const PaymentForm = ({ setIsOpen, subscriptionAmount, userInfo, refetch }) => {
             console.log(confirmError)
         }
         else {
-            console.log(paymentIntent)
+           
             if (paymentIntent.status === 'succeeded')
                 toast.success(`Payment successfully. Transaction ID: ${paymentIntent.id}`)
             setIsOpen(false)
