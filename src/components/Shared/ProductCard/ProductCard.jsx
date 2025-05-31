@@ -1,13 +1,15 @@
 import React from "react";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
 import useAuth from "../../../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 
 const ProductsCard = ({ product, refetch }) => {
   const { name, photo, tags, votes, _id, ownerEmail } = product || {};
-  const axiosSecure = useAxiosSecure();
+ 
+  const axiosPublic = useAxiosPublic()
   const { user } = useAuth();
   const navigate = useNavigate();
 
@@ -16,7 +18,7 @@ const ProductsCard = ({ product, refetch }) => {
       return navigate("/login");
     }
     try {
-      await axiosSecure.patch(`/products/vote/${id}`, {
+      await axiosPublic.patch(`/products/vote/${id}`, {
         userEmail: user?.email,
       });
       toast.success("Thank you for your vote❤️");

@@ -5,16 +5,16 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Heading from '../../../../components/Shared/Heading/Heading';
 import TagsInput from './TagsInput/TagsInput';
-import useUsers from '../../../../hooks/useUsers';
+
 
 const AddProducts = () => {
     const { user } = useAuth();
     const [tags, setTags] = useState([]);
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
-   const [userInfo] = useUsers()
  
-   console.log(userInfo)
+ 
+  
 
     const handleAdd = async (e) => {
         e.preventDefault();

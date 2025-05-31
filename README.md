@@ -1,12 +1,13 @@
-# React + Vite
+# 🧠 TechTrove - Discover & Share Innovative Tech Products 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **TechTrove**, a dynamic platform for discovering, reviewing, and promoting the latest tech products including web apps, AI tools, software, mobile apps, and games. 
 
-Currently, two official plugins are available:
+🔗 **Live Site URL:** [https://product-hunt-63bf5.web.app]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Key Features
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **🧑‍💻 Role-Based Dashboard**: Separate dashboards and permissions for Users, Moderators, and Admins.
+- **📥 Product Submission & Moderation**: Users can submit tech products for review; moderators approve, reject, or mark them as featured.
+- **🔥 Trending & Featured Products**: Homepage highlights most voted and moderator-featured products, sorted in real-time.
+- **💬 Review & Upvote System**: Users can upvote once and write reviews; owners can't vote for their own products.
+- **💸 Membership Subscription with Coupons**: Users can subscribe for premium features and apply admin-generated discount coupons.

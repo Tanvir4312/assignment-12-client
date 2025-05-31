@@ -18,6 +18,8 @@ import ProductDetail from "../Pages/ProductDetail/ProductDetail";
 import StatisticsPage from "../Pages/Dashboard/AdminSlot/StatisticsPage/StatisticsPage";
 import ManageUsers from "../Pages/Dashboard/AdminSlot/ManageUsers/ManageUsers";
 import ManageCoupons from "../Pages/Dashboard/AdminSlot/ManageCoupons/ManageCoupons";
+import ModeratorRoute from "./ModeratorRoute";
+import AdminRoute from "./AdminRoute";
 
 
 const router = createBrowserRouter([
@@ -60,40 +62,66 @@ const router = createBrowserRouter([
       // -------------User routes--------------
       {
         path: "my-profile",
-        element: <MyProfile></MyProfile>,
+        element: <PrivateRoute>
+          <MyProfile></MyProfile>
+        </PrivateRoute>,
       },
       {
         path: "add-product",
-        element: <AddProducts></AddProducts>
+        element: <PrivateRoute>
+          <AddProducts></AddProducts>
+        </PrivateRoute>
       },
       {
         path: "my-product",
-        element: <MyProducts></MyProducts>,
+        element: <PrivateRoute>
+          <MyProducts></MyProducts>
+        </PrivateRoute>,
       },
 
       // -----------moderator routes-----------------
       {
         path: 'review-queue',
-        element: <ReviewQueue></ReviewQueue>
+        element: <PrivateRoute>
+          <ModeratorRoute>
+            <ReviewQueue></ReviewQueue>
+          </ModeratorRoute>
+        </PrivateRoute>
       },
       {
         path: 'reported-contents',
-        element: <ReportedContents></ReportedContents>
+        element: <PrivateRoute>
+          <ModeratorRoute>
+            <ReportedContents></ReportedContents>
+          </ModeratorRoute>
+        </PrivateRoute>
       },
 
       // -------------Admin routes-------------------
-    {
+      {
         path: 'statistic',
-        element: <StatisticsPage></StatisticsPage>
-    },
-    {
+        element: <PrivateRoute>
+          <AdminRoute>
+            <StatisticsPage></StatisticsPage>
+          </AdminRoute>
+        </PrivateRoute>
+      },
+      {
         path: 'manage-users',
-        element: <ManageUsers></ManageUsers>
-    },
-    {
+        element: <PrivateRoute>
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        </PrivateRoute>
+      },
+      {
         path: 'manage-coupons',
-        element: <ManageCoupons></ManageCoupons>
-    },
+        element: <PrivateRoute>
+          <AdminRoute>
+            <ManageCoupons></ManageCoupons>
+          </AdminRoute>
+        </PrivateRoute>
+      },
     ],
   },
   {

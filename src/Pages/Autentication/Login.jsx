@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import register_bg from '../../assets/register-bg.avif'
 import useAuth from '../../hooks/useAuth';
 import { toast } from 'react-toastify';
@@ -9,6 +9,9 @@ const Login = () => {
     const { userLogin, loginWithGoogle } = useAuth();
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/";
+
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -18,7 +21,7 @@ const Login = () => {
         userLogin(email, password)
             .then(() => {
                 toast.success("User login successfully");
-                navigate("/");
+                navigate(from, { replace: true });
             })
             .catch((err) => {
                 toast.error(err.message);
@@ -36,24 +39,17 @@ const Login = () => {
                     name: result?.user?.displayName,
                     role: 'user',
                     isSubscribed: false,
-                   
+
                     createdAt: new Date(),
                     subscriptionDate: null,
                     paymentVerified: false,
                     status: 'pending'
                 };
-
-
-                 axiosPublic.post(`/user/${result?.user?.email}`, userInfo);
-
-
-
-
-
+                axiosPublic.post(`/user/${result?.user?.email}`, userInfo);
+                navigate(from, { replace: true });
                 toast.success("Login successfully");
-                navigate("/");
             })
-            
+
     };
     return (
         <div

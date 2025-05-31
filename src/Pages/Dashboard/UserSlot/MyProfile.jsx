@@ -5,16 +5,19 @@ import { useQuery } from '@tanstack/react-query'
 import PaymentModal from './PaymentModal/PaymentModal'
 import useCoupon from '../../../hooks/useCoupon'
 import { toast } from 'react-toastify'
+import useRole from '../../../hooks/useRole'
 
 
 const MyProfile = () => {
   const { user, loading } = useAuth()
+  const [role] = useRole()
   const axiosSecure = useAxiosSecure()
   let [isOpen, setIsOpen] = useState(false)
   const [coupons] = useCoupon()
   const [couponValue, setCouponValue] = useState('')
   const [subscriptionAmount, setSubscriptionAmount] = useState(99)
   const [inputValueDisabled, setInputValueDisabled] = useState(false)
+
 
   const { data: userInfo = {}, refetch } = useQuery({
     queryKey: ['user', user?.email],
@@ -53,6 +56,7 @@ const MyProfile = () => {
         <div className='py-5'>
           <img className='mx-auto rounded-full w-20 h-20' src={user?.photoURL} alt="" />
         </div>
+        <p className='bg-emerald-400 max-w-20 mx-auto mb-2 py-2 rounded text-xl font-medium text-white'>{role}</p>
         <p>{user?.email}</p>
         <div className='my-5'>
           <button onClick={() => setIsOpen(true)} disabled={isSubscribed} className='btn btn-primary'>Subscribe - ${subscriptionAmount}/month</button>
