@@ -5,16 +5,20 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Heading from '../../../../components/Shared/Heading/Heading';
 import TagsInput from './TagsInput/TagsInput';
+import useUsers from '../../../../hooks/useUsers';
 
 const AddProducts = () => {
     const { user } = useAuth();
     const [tags, setTags] = useState([]);
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
+   const [userInfo] = useUsers()
+ 
+   console.log(userInfo)
 
     const handleAdd = async (e) => {
         e.preventDefault();
-
+       
         const form = e.target;
         const name = form.name.value;
         const photo = form.photo.value;
@@ -44,8 +48,9 @@ const AddProducts = () => {
             await axiosSecure.post("/products", productsObj);
             toast.success("Product save");
             navigate("/dashboard/my-product");
+          
         } catch (err) {
-            console.log(err);
+           toast.error(`Oh no!! ${err.response.data.message}`);
         }
     };
     return (
@@ -183,7 +188,7 @@ const AddProducts = () => {
 
                     {/* Owner Image */}
                     <div className="my-5">
-                        {user && <img className="rounded" src={user.photoURL} alt="" />}
+                        {user && <img className="rounded w-24" src={user.photoURL} alt="" />}
                     </div>
                     <div className="mb-5">
                         <TagsInput tags={tags} setTags={setTags}></TagsInput>

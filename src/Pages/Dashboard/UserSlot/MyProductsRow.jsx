@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { toast } from 'react-toastify';
+
 
 const MyProductsRow = ({ product, idx, refetch }) => {
     const axiosSecure = useAxiosSecure()
@@ -23,21 +23,23 @@ const MyProductsRow = ({ product, idx, refetch }) => {
             if (result.isConfirmed) {
                 try {
                     await axiosSecure.delete(`/product-data-delete/${id}`)
-                    toast.success('Your Data Deleted')
+
                     refetch()
                 } catch (err) {
                     console.log(err)
                 }
 
                 Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
                 });
             }
         });
 
-  
+
     }
     return (
         <tr className="bg-base-200">

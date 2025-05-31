@@ -11,7 +11,7 @@ const ReviewTable = ({ product, idx, refetch }) => {
     //    Make Featured
     const handleMakeFeatured = async id => {
         try {
-            await axiosSecure.patch(`/product/reviewQueue-update/${id}`,)
+            await axiosSecure.patch(`/product/reviewQueue-update/${id}`,{ status: '' })
             toast.success('Product Featured')
             refetch()
         } catch (err) {
@@ -77,13 +77,7 @@ const ReviewTable = ({ product, idx, refetch }) => {
                     console.log(err)
                 }
 
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Your work has been saved",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
+            
             }
         });
 

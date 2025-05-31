@@ -23,17 +23,12 @@ const ReportedTable = ({ reportedProduct, idx, refetch }) => {
                 if (result.isConfirmed) {
                     try {
                         await axiosSecure.delete(`/product-data-delete/${id}`)
-                        toast.success('Your Data Deleted')
+                        toast.success('Reported Data Deleted')
                         refetch()
                     } catch (err) {
                         console.log(err)
                     }
     
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success"
-                    });
                 }
             });
     

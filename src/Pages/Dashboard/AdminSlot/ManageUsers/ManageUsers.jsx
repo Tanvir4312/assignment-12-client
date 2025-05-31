@@ -1,22 +1,15 @@
-import React from 'react'
-import useAxiosSecure from '../../../../hooks/useAxiosSecure'
-import { useQuery } from '@tanstack/react-query'
+
+
 import Heading from '../../../../components/Shared/Heading/Heading'
+import useUsers from '../../../../hooks/useUsers'
 import ManageUsersTable from '../ManageUsersTable/ManageUsersTable'
-import useAuth from '../../../../hooks/useAuth'
+
 
 const ManageUsers = () => {
-  const axiosSecure = useAxiosSecure()
-  const {user} = useAuth()
+  const [users, refetch] = useUsers()
 
-  const { data: users = [], refetch } = useQuery({
-    queryKey: ['all-user', user?.email],
-    queryFn: async () => {
-      const { data } = await axiosSecure.get(`/all-user/${user?.email}`);
-      return data
-    }
-  })
- 
+
+
   return (
     <div>
       <div>
